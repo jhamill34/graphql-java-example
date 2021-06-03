@@ -1,0 +1,42 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    // Deprecated Deps
+    implementation group: 'com.google.inject', name: 'guice', version: '5.0.1'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '0.9.26'
+
+    implementation group: 'com.graphql-java', name: 'graphql-java', version: '16.2'
+    implementation group: 'com.graphql-java', name: 'java-dataloader', version: '2.2.3'
+    implementation group: 'com.graphql-java', name: 'graphql-java-spring-boot-starter-webmvc', version: '2.0'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.5.0'
+
+
+    // Use JUnit Jupiter API for testing.
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'lp.web.server.App'
+}
+
+tasks.named('test') {
+    // Use junit platform for unit tests.
+    useJUnitPlatform()
+}
